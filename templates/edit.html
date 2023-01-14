@@ -1,0 +1,49 @@
+{{define "title"}}
+	<title>Editing: {{.Title}} | Wiki</title>
+{{end}}
+
+{{define "stylesheets"}}
+	<link rel="stylesheet" href="/css/simplemde.min.css" />
+{{end}}
+
+{{define "nav"}}
+	<input type="submit" form="edit" value="Save" />
+{{end}}
+
+{{define "body"}}
+	<form id="edit" method="post" action="/edit/" class="form">
+		<input name="id" type="hidden" value="{{.ID}}" />
+		<input name="alias" type="hidden" value="{{.Alias}}" />
+		<input name="title" 
+			autofocus="true"
+			class="inputTitle"
+			id="title"
+			placeholder="Title, e.g. My Cool Page" 
+			type="text" 
+			value="{{.Title}}"
+		/>
+		<textarea id="contents" name="contents" class="inputContents">{{.Contents}}</textarea>
+	</form>
+{{end}}
+
+{{define "scripts"}}
+	<!-- Reenable once we figure out how to cram vim.js into SimpleMDE's CodeMirror -->
+	<!--
+	<script src="/js/vim.js"></script>
+	-->
+	<script src="/js/simplemde.js"></script>
+	<script>
+		var simplemde = new SimpleMDE({
+			autoDownloadFontAwesome: false, // Font Awesome depends on some stupid CDN
+			autofocus: true,
+			element: document.getElementById("contents"),
+			spellChecker: false, // Spell checker depends on some stupid CDN
+			toolbar: false
+		});
+
+		var titleInput = document.getElementById("title");
+		titleInput.addEventListener("input", function(e) {
+			document.title = "Editing: " + e.target.value + " | Wiki";
+		});
+	</script>
+{{end}}

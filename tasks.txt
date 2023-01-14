@@ -1,0 +1,7 @@
+INTERNAL
+- rename "Graph" to "EdgeSource"?
+- unit/integration tests
+- cmd packages for command line projects
+
+DESIGN
+- fonts?

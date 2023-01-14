@@ -1,0 +1,19 @@
+# Google App Engine runtime configuration file.
+#
+# To run the Wiki on the App Engine emulator, run:
+# 
+#   dev_appserver.py app.yaml
+#
+runtime: go
+api_version: go1
+
+env_variables:
+  WIKI_TEMPLATE_DIR: templates
+
+handlers:
+- url: /css
+  static_dir: ../../static/css
+- url: /js
+  static_dir: ../../static/js
+- url: /.*
+  script: _go_app

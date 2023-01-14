@@ -1,0 +1,61 @@
+{{define "title"}}
+	<title>Search: {{.Query}} | Wiki</title>
+{{end}}
+
+{{define "nav"}}
+	<a href="/new"><button>New page</button></a>
+{{end}}
+
+{{define "stylesheets"}}
+{{end}}
+
+{{define "body"}}
+	<h4 class="spaced">{{.Count}} results for "{{.Query}}"</h4>
+	{{range $i, $r := .Results}}
+		{{if $i}}
+			<div class="hr spaced"></div>
+		{{end}}
+		<div class="searchResult spaced">
+			<h3><a href="{{.URL}}">{{$r.Title}}</a></h3>
+			<p>{{$r.Preview}}</p>
+		</div>
+	{{end}}
+{{end}}
+
+{{define "scripts"}}
+	<script>
+		// TODO: Upgrade JS to use a bundler, type checking, all that, maybe
+		var searchBox = document.getElementById("searchBox");
+		searchBox && searchBox.addEventListener("keypress", function(e) {
+			e.stopPropagation();
+		});
+
+		var searchResults = document.querySelectorAll(".searchResult a");
+		var focus = -1;
+
+		function moveSearchResultFocus(n) {
+			focus = focus + n;
+			if (focus < 0) {
+				focus = 0;
+			} else if (focus >= searchResults.length) {
+				focus = searchResults.length - 1;
+			}
+			searchResults[focus].focus();
+			searchResults[focus].scrollIntoView();
+		}
+
+		document.addEventListener("keypress", function(e) {
+			if (searchBox && e.key === "/" || e.key === "?") {
+				e.preventDefault();
+				searchBox.focus();
+				searchBox.scrollIntoView();
+			} else if (e.key === "j") {
+				moveSearchResultFocus(1);
+			} else if (e.key === "k") {
+				moveSearchResultFocus(-1);
+			} else {
+				console.log(e);
+			}
+		});
+	</script>
+{{end}}

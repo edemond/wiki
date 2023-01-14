@@ -1,0 +1,45 @@
+{{define "title"}}
+	<title>New page | Wiki</title>
+{{end}}
+
+{{define "stylesheets"}}
+	<link rel="stylesheet" href="/css/simplemde.min.css" />
+{{end}}
+
+{{define "nav"}}
+	<input type="submit" form="edit" value="Save" />
+{{end}}
+
+{{define "body"}}
+	<form id="edit" method="post" action="/new" class="form">
+		<input name="title" 
+			autofocus="true"
+			class="inputTitle"
+			id="title"
+			placeholder="Title, e.g. My Cool Page" 
+			type="text" 
+		/>
+		<textarea id="contents" 
+			name="contents" 
+			placeholder="## Start writing..."
+			class="inputContents">{{.Contents}}</textarea>
+	</form>
+{{end}}
+
+{{define "scripts"}}
+	<script src="/js/simplemde.js"></script>
+	<script>
+		var simplemde = new SimpleMDE({
+			autoDownloadFontAwesome: false, // Font Awesome depends on some stupid CDN
+			autofocus: true,
+			element: document.getElementById("contents"),
+			spellChecker: false, // Spell checker depends on some stupid CDN
+			toolbar: false
+		});
+
+		var titleInput = document.getElementById("title");
+		titleInput.addEventListener("input", function(e) {
+			document.title = "New: " + e.target.value + " | Wiki";
+		});
+	</script>
+{{end}}

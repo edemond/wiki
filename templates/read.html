@@ -1,0 +1,33 @@
+{{define "title"}}
+	<title>{{.Title}} | Wiki</title>
+{{end}}
+
+{{define "nav"}}
+	<a href="/new"><button>New page</button></a>
+	<a href="/edit/{{.Alias}}"><button>Edit</button></a>
+{{end}}
+
+{{define "stylesheets"}}
+{{end}}
+
+{{define "body"}}
+	<h1>{{.Title}}</h1>
+	{{.Contents}}
+{{end}}
+
+{{define "scripts"}}
+	<script>
+		var searchBox = document.getElementById("searchBox");
+		if (searchBox) {
+			searchBox.addEventListener("keypress", function(e) {
+				e.stopPropagation();
+			});
+			document.addEventListener("keypress", function(e) {
+				if (e.key === "/") {
+					e.preventDefault();
+					searchBox.focus();
+				}
+			});
+		}
+	</script>
+{{end}}

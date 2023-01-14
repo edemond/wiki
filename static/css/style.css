@@ -1,0 +1,142 @@
+html {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	line-height: 1.4;
+}
+
+pre {
+	background-color: #eee;
+	font-family: "Lucida Console Regular", monospace;
+	padding: 10px;
+}
+
+code {
+	background-color: #eee;
+	font-family: "Lucida Console Regular", monospace;
+	padding: 2px 4px;
+}
+
+h3,h4,p,ul,ol,li,hr,pre {
+	margin-bottom: 0;
+	margin-top: 20px;
+}
+
+h1,h2 {
+	margin-bottom: 0;
+	margin-top: 40px;
+}
+
+h2 {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 4px;
+	padding-top: 0;
+}
+
+h3 + p, h3 + ul {
+	margin-top: 4px;
+}
+
+h1,h3,h4,p,ul,ol,li,hr {
+	padding-bottom: 0;
+	padding-top: 0;
+}
+
+li + li {
+	margin-top: 4px;
+}
+
+.spaced + .spaced {
+	margin-top: 20px;
+}
+
+.nav {
+	background-color: #f8f8f8;
+	border-bottom: 1px solid #eee;
+	/*
+	box-shadow: 0px -5px 20px #bbb;
+	*/
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+.nav > .column {
+	padding: 16px;
+}
+
+.navContents {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.searchBox {
+	padding: 4px;
+	width: 400px;
+}
+
+.searchBox:focus {
+	border: 1px solid #80A0FF;
+}
+
+.column {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 800px;
+	padding: 20px;
+}
+
+.form > *+* {
+	display: block;
+	margin-top: 20px;
+}
+
+.form > * {
+	width: 100%;
+}
+
+.form > input,textarea {
+	display: block;
+	padding: 5px;
+}
+
+.hr {
+	border-bottom: 1px solid #ddd;
+	height: 0;
+	width: 100%;
+}
+
+.inputTitle {
+	font-size: 32px;
+	font-weight: 700;
+}
+
+.inputContents {
+	height: 75vh; /* dumb; use grid or something */
+}
+
+.searchResult > h3, .searchResult > p {
+	font-weight: normal;
+	margin-top: 0;
+	margin-bottom: 2px;
+}
+
+.searchResult > h3 > a {
+	text-decoration: none;
+}
+.searchResult > h3 > a:hover {
+	text-decoration: underline;
+}
+.searchResult > h3 > a:focus {
+	background-color: #f4f4ff;
+}
